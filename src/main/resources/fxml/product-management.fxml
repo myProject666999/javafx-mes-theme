@@ -11,14 +11,13 @@
            prefWidth="1200"
            prefHeight="600">
 
-    <VBox spacing="10" style="-fx-background-color: #1e1e1e; -fx-padding: 10;">
-        <Label text="物料产品分类" style="-fx-text-fill: #cccccc; -fx-font-size: 14px; -fx-font-weight: bold;"/>
-        <TreeView fx:id="categoryTree" VBox.vgrow="ALWAYS" style="-fx-background-color: #252526;"/>
-        <Button text="🔄 刷新" onAction="#refreshCategoryTree" styleClass="action-button"
-                style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
+    <VBox spacing="10" styleClass="category-panel">
+        <Label text="物料产品分类" styleClass="category-label"/>
+        <TreeView fx:id="categoryTree" VBox.vgrow="ALWAYS"/>
+        <Button text="🔄 刷新" onAction="#refreshCategoryTree" styleClass="action-button, secondary-button"/>
     </VBox>
 
-    <VBox spacing="15" style="-fx-background-color: #1e1e1e; -fx-padding: 10;">
+    <VBox spacing="15" styleClass="content-panel">
         <HBox alignment="CENTER_LEFT" spacing="15">
             <Label styleClass="content-header" text="物料产品管理"/>
             <Region HBox.hgrow="ALWAYS"/>
@@ -27,17 +26,15 @@
             <Button fx:id="deleteButton" styleClass="action-button, delete-button" text="🗑️ 删除" onAction="#handleBatchDelete"/>
         </HBox>
 
-        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #252526; -fx-background-radius: 8; -fx-padding: 15;">
-            <Label text="物料编码:" style="-fx-text-fill: #cccccc;"/>
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="search-bar">
+            <Label text="物料编码:" styleClass="search-label"/>
             <TextField fx:id="codeSearchField" promptText="请输入物料编码" styleClass="input-field" prefWidth="120"/>
-            <Label text="物料名称:" style="-fx-text-fill: #cccccc;"/>
+            <Label text="物料名称:" styleClass="search-label"/>
             <TextField fx:id="nameSearchField" promptText="请输入物料名称" styleClass="input-field" prefWidth="120"/>
-            <Label text="是否启用:" style="-fx-text-fill: #cccccc;"/>
+            <Label text="是否启用:" styleClass="search-label"/>
             <ComboBox fx:id="enabledSearchCombo" styleClass="input-field" prefWidth="120"/>
-            <Button styleClass="action-button" text="🔍 查询" onAction="#handleSearch"
-                    style="-fx-background-color: #007acc; -fx-text-fill: white;"/>
-            <Button styleClass="action-button" text="🔄 重置" onAction="#handleReset"
-                    style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
+            <Button styleClass="action-button, primary-button" text="🔍 查询" onAction="#handleSearch"/>
+            <Button styleClass="action-button, secondary-button" text="🔄 重置" onAction="#handleReset"/>
         </HBox>
 
         <TableView fx:id="productTable" VBox.vgrow="ALWAYS">

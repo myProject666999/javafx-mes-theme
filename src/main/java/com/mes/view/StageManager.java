@@ -1,12 +1,11 @@
 package com.mes.view;
 
-import atlantafx.base.theme.PrimerDark;
+import com.mes.config.ThemeManager;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,16 +18,20 @@ import java.io.IOException;
 public class StageManager {
 
     private final ApplicationContext applicationContext;
+    private final ThemeManager themeManager;
     private Stage primaryStage;
     private double xOffset = 0;
     private double yOffset = 0;
+    private Scene currentScene;
 
     public StageManager(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
+        this.themeManager = ThemeManager.getInstance();
     }
 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
+        themeManager.setPrimaryStage(primaryStage);
     }
 
     private FXMLLoader getLoader(String fxmlPath) {
@@ -40,12 +43,12 @@ public class StageManager {
     public void showLogin() {
         Platform.runLater(() -> {
             try {
-                javafx.application.Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
-
                 FXMLLoader loader = getLoader("/fxml/login.fxml");
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root, 500, 400);
+                currentScene = scene;
+                themeManager.setCurrentScene(scene);
 
                 root.setOnMousePressed(event -> {
                     xOffset = event.getSceneX();
@@ -64,6 +67,7 @@ public class StageManager {
                 
                 primaryStage.close();
                 primaryStage = loginStage;
+                themeManager.setPrimaryStage(primaryStage);
                 primaryStage.show();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -78,6 +82,8 @@ public class StageManager {
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root, 1280, 800);
+                currentScene = scene;
+                themeManager.setCurrentScene(scene);
 
                 root.setOnMousePressed(event -> {
                     xOffset = event.getSceneX();
@@ -108,6 +114,14 @@ public class StageManager {
                 e.printStackTrace();
             }
         });
+    }
+
+    public Scene getCurrentScene() {
+        return currentScene;
+    }
+
+    public ThemeManager getThemeManager() {
+        return themeManager;
     }
 
     public Stage getPrimaryStage() {

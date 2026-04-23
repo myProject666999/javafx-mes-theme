@@ -1,5 +1,6 @@
 package com.mes.controller;
 
+import com.mes.config.ThemeManager;
 import com.mes.entity.Permission;
 import com.mes.service.AuthService;
 import com.mes.service.PermissionService;
@@ -259,6 +260,17 @@ public class MainController {
                 });
     }
 
+    @FXML
+    public void showSettings() {
+        loadView("/fxml/settings.fxml");
+        findAllButtonsWithStyle(contentPane.getScene().getRoot(), "sidebar-button")
+                .forEach(btn -> {
+                    if ("⚙️  界面设置".equals(btn.getText())) {
+                        setActiveButton(btn);
+                    }
+                });
+    }
+
     private void loadView(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -266,6 +278,8 @@ public class MainController {
             Parent view = loader.load();
             contentPane.getChildren().clear();
             contentPane.getChildren().add(view);
+            
+            ThemeManager.getInstance().applyFontStyles();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -277,7 +291,8 @@ public class MainController {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("确认退出");
             alert.setHeaderText("确定要退出登录吗？");
-            alert.getDialogPane().getStylesheets().add("/css/style.css");
+            
+            ThemeManager.getInstance().applyToDialogPane(alert.getDialogPane());
             
             alert.showAndWait().ifPresent(result -> {
                 if (result == ButtonType.OK) {

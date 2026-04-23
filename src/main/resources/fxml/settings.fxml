@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mes.controller.SettingsController">
+
+    <padding>
+        <Insets top="0" right="0" bottom="0" left="0"/>
+    </padding>
+
+    <ScrollPane fitToWidth="true" fitToHeight="false" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0">
+        <content>
+            <VBox spacing="25" styleClass="settings-content">
+
+                <Label text="界面设置" styleClass="settings-title"/>
+
+                <TitledPane text="主题设置" expanded="true">
+                    <content>
+                        <VBox spacing="15">
+                            <padding>
+                                <Insets top="15" right="15" bottom="15" left="15"/>
+                            </padding>
+
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="选择主题:" minWidth="100"/>
+                                <ComboBox fx:id="themeComboBox" prefWidth="250"/>
+                            </HBox>
+
+                            <Label text="主题说明:" styleClass="settings-section-label"/>
+                            <VBox spacing="5">
+                                <Label text="• 深色主题 (VSCode风格) - 默认深色主题，类似VSCode暗色风格"/>
+                                <Label text="• VSCode浅色主题 - 类似VSCode的浅色风格"/>
+                                <Label text="• 浅色主题 - 明亮清新的浅色风格"/>
+                                <Label text="• 蓝色主题 - 专业的蓝色主题风格"/>
+                            </VBox>
+                        </VBox>
+                    </content>
+                </TitledPane>
+
+                <TitledPane text="字体设置" expanded="true">
+                    <content>
+                        <VBox spacing="20">
+                            <padding>
+                                <Insets top="15" right="15" bottom="15" left="15"/>
+                            </padding>
+
+                            <Label text="界面字体设置" styleClass="settings-section-label"/>
+                            <HBox spacing="15" alignment="CENTER_LEFT">
+                                <Label text="字体:" minWidth="50"/>
+                                <ComboBox fx:id="uiFontFamilyComboBox" prefWidth="200"/>
+                                <Label text="大小:" minWidth="40"/>
+                                <Spinner fx:id="uiFontSizeSpinner" prefWidth="80"/>
+                                <Label text="px"/>
+                            </HBox>
+
+                            <VBox spacing="5">
+                                <Label text="预览:" styleClass="settings-section-label"/>
+                                <Label fx:id="previewLabel" text="这是界面字体的预览效果。The quick brown fox jumps over the lazy dog."/>
+                            </VBox>
+
+                            <Separator/>
+
+                            <Label text="表格字体设置" styleClass="settings-section-label"/>
+                            <HBox spacing="15" alignment="CENTER_LEFT">
+                                <Label text="字体:" minWidth="50"/>
+                                <ComboBox fx:id="tableFontFamilyComboBox" prefWidth="200"/>
+                                <Label text="大小:" minWidth="40"/>
+                                <Spinner fx:id="tableFontSizeSpinner" prefWidth="80"/>
+                                <Label text="px"/>
+                            </HBox>
+
+                            <VBox spacing="5">
+                                <Label text="表格预览:" styleClass="settings-section-label"/>
+                                <TableView fx:id="previewTable" prefHeight="120">
+                                    <columns>
+                                        <TableColumn text="序号" prefWidth="80"/>
+                                        <TableColumn text="名称" prefWidth="150"/>
+                                        <TableColumn text="描述" prefWidth="300"/>
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                        </VBox>
+                    </content>
+                </TitledPane>
+
+                <HBox spacing="15" alignment="CENTER_RIGHT">
+                    <Button text="恢复默认设置" onAction="#resetToDefaults" styleClass="action-button, secondary-button"/>
+                </HBox>
+
+                <Region VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </content>
+    </ScrollPane>
+</AnchorPane>

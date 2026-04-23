@@ -8,7 +8,6 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.mes.controller.LoginController"
-      stylesheets="/css/style.css"
       styleClass="root"
       alignment="CENTER">
 
@@ -34,12 +33,12 @@
 
             <VBox spacing="12" prefWidth="300">
                 <VBox spacing="5">
-                    <Label text="用户名" style="-fx-text-fill: #cccccc; -fx-font-size: 13px;"/>
+                    <Label text="用户名" styleClass="login-field-label"/>
                     <TextField fx:id="usernameField" styleClass="input-field" promptText="请输入用户名"/>
                 </VBox>
 
                 <VBox spacing="5">
-                    <Label text="密码" style="-fx-text-fill: #cccccc; -fx-font-size: 13px;"/>
+                    <Label text="密码" styleClass="login-field-label"/>
                     <PasswordField fx:id="passwordField" styleClass="input-field" promptText="请输入密码"/>
                 </VBox>
 
@@ -54,7 +53,7 @@
             </VBox>
 
             <Label text="默认账号: admin / admin123"
-                   style="-fx-text-fill: #6c6c6c; -fx-font-size: 11px;"/>
+                   styleClass="login-hint-label"/>
         </VBox>
     </StackPane>
 </VBox>

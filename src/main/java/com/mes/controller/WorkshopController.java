@@ -1,5 +1,6 @@
 package com.mes.controller;
 
+import com.mes.config.ThemeManager;
 import com.mes.dto.WorkshopDTO;
 import com.mes.service.AuthService;
 import com.mes.service.WorkshopService;
@@ -281,6 +282,8 @@ public class WorkshopController {
             return null;
         });
 
+        ThemeManager.getInstance().applyToDialogPane(dialog.getDialogPane());
+
         Optional<WorkshopDTO> result = dialog.showAndWait();
         result.ifPresent(dto -> {
             try {
@@ -361,6 +364,8 @@ public class WorkshopController {
             return null;
         });
 
+        ThemeManager.getInstance().applyToDialogPane(dialog.getDialogPane());
+
         Optional<WorkshopDTO> result = dialog.showAndWait();
         result.ifPresent(dto -> {
             try {
@@ -377,6 +382,8 @@ public class WorkshopController {
         alert.setTitle("确认删除");
         alert.setHeaderText(null);
         alert.setContentText("确定要删除车间 \"" + workshop.getName() + "\" 吗？");
+        
+        ThemeManager.getInstance().applyToDialogPane(alert.getDialogPane());
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -411,6 +418,8 @@ public class WorkshopController {
         alert.setTitle("确认删除");
         alert.setHeaderText(null);
         alert.setContentText("确定要删除选中的 " + selected.size() + " 个车间吗？");
+        
+        ThemeManager.getInstance().applyToDialogPane(alert.getDialogPane());
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -482,6 +491,9 @@ public class WorkshopController {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
+        
+        ThemeManager.getInstance().applyToDialogPane(alert.getDialogPane());
+        
         alert.showAndWait();
     }
 }

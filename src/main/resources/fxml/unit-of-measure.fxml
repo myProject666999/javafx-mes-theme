@@ -15,19 +15,16 @@
         <Button fx:id="addButton" styleClass="action-button, add-button" text="➕ 新增" onAction="#showAddDialog"/>
         <Button fx:id="editButton" styleClass="action-button, edit-button" text="✏️ 修改" onAction="#handleBatchEdit"/>
         <Button fx:id="deleteButton" styleClass="action-button, delete-button" text="🗑️ 删除" onAction="#handleBatchDelete"/>
-        <Button fx:id="exportButton" styleClass="action-button" text="📤 导出" onAction="#handleExport" 
-                style="-fx-background-color: #17a2b8; -fx-text-fill: white;"/>
+        <Button fx:id="exportButton" styleClass="action-button, info-button" text="📤 导出" onAction="#handleExport"/>
     </HBox>
 
-    <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #252526; -fx-background-radius: 8; -fx-padding: 15;">
-        <Label text="单位编码:" style="-fx-text-fill: #cccccc;"/>
+    <HBox alignment="CENTER_LEFT" spacing="15" styleClass="search-bar">
+        <Label text="单位编码:" styleClass="search-label"/>
         <TextField fx:id="codeSearchField" promptText="请输入单位编码" styleClass="input-field" prefWidth="150"/>
-        <Label text="单位名称:" style="-fx-text-fill: #cccccc;"/>
+        <Label text="单位名称:" styleClass="search-label"/>
         <TextField fx:id="nameSearchField" promptText="请输入单位名称" styleClass="input-field" prefWidth="150"/>
-        <Button styleClass="action-button" text="🔍 查询" onAction="#handleSearch" 
-                style="-fx-background-color: #007acc; -fx-text-fill: white;"/>
-        <Button styleClass="action-button" text="🔄 重置" onAction="#handleReset"
-                style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
+        <Button styleClass="action-button, primary-button" text="🔍 查询" onAction="#handleSearch"/>
+        <Button styleClass="action-button, secondary-button" text="🔄 重置" onAction="#handleReset"/>
     </HBox>
 
     <TableView fx:id="unitTable" prefHeight="500">

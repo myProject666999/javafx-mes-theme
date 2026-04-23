@@ -12,32 +12,29 @@
     <HBox alignment="CENTER_LEFT" spacing="15">
         <Label styleClass="content-header" text="工作站管理"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <Button fx:id="exportButton" styleClass="action-button" text="📤 导出" onAction="#handleExport"
-                style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
+        <Button fx:id="exportButton" styleClass="action-button, success-button" text="📤 导出" onAction="#handleExport"/>
         <Button fx:id="addButton" styleClass="action-button, add-button" text="➕ 新增" onAction="#showAddDialog"/>
         <Button fx:id="editButton" styleClass="action-button, edit-button" text="✏️ 修改" onAction="#handleBatchEdit"/>
         <Button fx:id="deleteButton" styleClass="action-button, delete-button" text="🗑️ 删除" onAction="#handleBatchDelete"/>
     </HBox>
 
-    <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #252526; -fx-background-radius: 8; -fx-padding: 15;">
-        <Label text="工作站名称:" style="-fx-text-fill: #cccccc;"/>
+    <HBox alignment="CENTER_LEFT" spacing="15" styleClass="search-bar">
+        <Label text="工作站名称:" styleClass="search-label"/>
         <TextField fx:id="nameSearchField" promptText="请输入工作站名称" styleClass="input-field" prefWidth="120"/>
-        <Label text="所在车间:" style="-fx-text-fill: #cccccc;"/>
+        <Label text="所在车间:" styleClass="search-label"/>
         <ComboBox fx:id="workshopSearchCombo" styleClass="input-field" prefWidth="120">
             <items>
             </items>
         </ComboBox>
-        <Label text="所属工序:" style="-fx-text-fill: #cccccc;"/>
+        <Label text="所属工序:" styleClass="search-label"/>
         <TextField fx:id="processSearchField" promptText="请输入工序名称" styleClass="input-field" prefWidth="120"/>
-        <Label text="是否启用:" style="-fx-text-fill: #cccccc;"/>
+        <Label text="是否启用:" styleClass="search-label"/>
         <ComboBox fx:id="enabledSearchCombo" styleClass="input-field" prefWidth="120">
             <items>
             </items>
         </ComboBox>
-        <Button styleClass="action-button" text="🔍 查询" onAction="#handleSearch"
-                style="-fx-background-color: #007acc; -fx-text-fill: white;"/>
-        <Button styleClass="action-button" text="🔄 重置" onAction="#handleReset"
-                style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
+        <Button styleClass="action-button, primary-button" text="🔍 查询" onAction="#handleSearch"/>
+        <Button styleClass="action-button, secondary-button" text="🔄 重置" onAction="#handleReset"/>
     </HBox>
 
     <TableView fx:id="workstationTable" prefHeight="500">

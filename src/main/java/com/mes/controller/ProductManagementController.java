@@ -1,5 +1,6 @@
 package com.mes.controller;
 
+import com.mes.config.ThemeManager;
 import com.mes.dto.BomItemDTO;
 import com.mes.dto.ProductCategoryDTO;
 import com.mes.dto.ProductDTO;
@@ -452,6 +453,8 @@ public class ProductManagementController {
             return null;
         });
 
+        ThemeManager.getInstance().applyToDialogPane(dialog.getDialogPane());
+
         Optional<ProductDTO> result = dialog.showAndWait();
         result.ifPresent(dto -> {
             try {
@@ -603,6 +606,8 @@ public class ProductManagementController {
             return null;
         });
 
+        ThemeManager.getInstance().applyToDialogPane(dialog.getDialogPane());
+
         Optional<ProductDTO> result = dialog.showAndWait();
         result.ifPresent(dto -> {
             try {
@@ -704,6 +709,8 @@ public class ProductManagementController {
             }
             return null;
         });
+
+        ThemeManager.getInstance().applyToDialogPane(dialog.getDialogPane());
 
         Optional<List<BomItemDTO>> result = dialog.showAndWait();
         result.ifPresent(items -> {
@@ -808,6 +815,8 @@ public class ProductManagementController {
             return null;
         });
 
+        ThemeManager.getInstance().applyToDialogPane(dialog.getDialogPane());
+
         Optional<BomItemDTO> result = dialog.showAndWait();
         result.ifPresent(bomItems::add);
     }
@@ -817,6 +826,8 @@ public class ProductManagementController {
         alert.setTitle("确认删除");
         alert.setHeaderText(null);
         alert.setContentText("确定要删除物料 \"" + product.getName() + "\" 吗？");
+        
+        ThemeManager.getInstance().applyToDialogPane(alert.getDialogPane());
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -850,6 +861,8 @@ public class ProductManagementController {
         alert.setTitle("确认删除");
         alert.setHeaderText(null);
         alert.setContentText("确定要删除选中的 " + selectedProducts.size() + " 个物料吗？");
+        
+        ThemeManager.getInstance().applyToDialogPane(alert.getDialogPane());
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -869,6 +882,9 @@ public class ProductManagementController {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
+        
+        ThemeManager.getInstance().applyToDialogPane(alert.getDialogPane());
+        
         alert.showAndWait();
     }
 }

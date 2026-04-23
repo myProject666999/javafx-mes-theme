@@ -1,5 +1,6 @@
 package com.mes.controller;
 
+import com.mes.config.ThemeManager;
 import com.mes.dto.UserDTO;
 import com.mes.entity.Role;
 import com.mes.entity.User;
@@ -140,8 +141,6 @@ public class UserManagementController {
     private Dialog<User> createUserDialog(String title, User user) {
         Dialog<User> dialog = new Dialog<>();
         dialog.setTitle(title);
-        dialog.getDialogPane().getStylesheets().add("/css/style.css");
-        dialog.getDialogPane().getStyleClass().add("dialog-pane");
 
         ButtonType saveButtonType = new ButtonType("保存", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
@@ -242,6 +241,8 @@ public class UserManagementController {
             return null;
         });
 
+        ThemeManager.getInstance().applyToDialogPane(dialog.getDialogPane());
+
         return dialog;
     }
 
@@ -250,7 +251,8 @@ public class UserManagementController {
         dialog.setTitle("重置密码");
         dialog.setHeaderText("重置用户 " + dto.getUsername() + " 的密码");
         dialog.setContentText("请输入新密码:");
-        dialog.getDialogPane().getStylesheets().add("/css/style.css");
+        
+        ThemeManager.getInstance().applyToDialogPane(dialog.getDialogPane());
 
         dialog.showAndWait().ifPresent(newPassword -> {
             if (!newPassword.isEmpty()) {
@@ -264,7 +266,8 @@ public class UserManagementController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("确认删除");
         alert.setHeaderText("确认删除用户 " + dto.getUsername() + "?");
-        alert.getDialogPane().getStylesheets().add("/css/style.css");
+        
+        ThemeManager.getInstance().applyToDialogPane(alert.getDialogPane());
 
         alert.showAndWait().ifPresent(result -> {
             if (result == ButtonType.OK) {
@@ -279,7 +282,9 @@ public class UserManagementController {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
-        alert.getDialogPane().getStylesheets().add("/css/style.css");
+        
+        ThemeManager.getInstance().applyToDialogPane(alert.getDialogPane());
+        
         alert.showAndWait();
     }
 }
